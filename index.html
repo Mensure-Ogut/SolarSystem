@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>3D Solar System - CENG376 Assignment</title>
+    <style>
+        body, html {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            background: black;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="glCanvas"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/gl-matrix@3.4.3/gl-matrix-min.js"></script>
+    <!-- Vertex Shader -->
+    <!-- Fragment Shader -->
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec3 a_Position;
+        uniform mat4 u_Model;
+        uniform mat4 u_View;
+        uniform mat4 u_Projection;
+
+        void main() {
+          gl_Position = u_Projection * u_View * u_Model * vec4(a_Position, 1.0);
+        }
+    </script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 u_Color;
+
+        void main() {
+          gl_FragColor = u_Color;
+        }
+    </script>
+
+    <script src="21118080057.js"></script>
+</body>
+</html>
